@@ -1,0 +1,143 @@
+{
+  "name": "lua-formatter-2026",
+  "displayName": "Lua Formatter 2026",
+  "description": "Formats Lua and Luau. Semicolons are optional in Lua; this formatter writes them so statement boundaries stay obvious.",
+  "version": "0.1.4",
+  "publisher": "rawtx",
+  "license": "MIT",
+  "icon": "icon.png",
+  "engines": {
+    "vscode": "^1.138.0"
+  },
+  "categories": [
+    "Formatters",
+    "Programming Languages"
+  ],
+  "keywords": [
+    "lua",
+    "luau",
+    "fivem",
+    "roblox",
+    "formatter",
+    "format",
+    "semicolon"
+  ],
+  "capabilities": {
+    "virtualWorkspaces": true,
+    "untrustedWorkspaces": {
+      "supported": true
+    }
+  },
+  "activationEvents": [
+    "onLanguage:lua",
+    "onLanguage:luau"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "languages": [
+      {
+        "id": "lua",
+        "aliases": ["Lua", "lua"],
+        "extensions": [".lua"],
+        "configuration": "./language-configuration.json"
+      },
+      {
+        "id": "luau",
+        "aliases": ["Luau", "luau"],
+        "extensions": [".luau"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "lua",
+        "scopeName": "source.lua",
+        "path": "./syntaxes/lua.tmLanguage.json"
+      },
+      {
+        "language": "luau",
+        "scopeName": "source.lua",
+        "path": "./syntaxes/lua.tmLanguage.json"
+      }
+    ],
+    "configurationDefaults": {
+      "[lua]": {
+        "editor.defaultFormatter": "rawtx.lua-formatter-2026"
+      },
+      "[luau]": {
+        "editor.defaultFormatter": "rawtx.lua-formatter-2026"
+      }
+    },
+    "commands": [
+      {
+        "command": "lua-formatter-2026.format",
+        "title": "Format Document",
+        "category": "Lua Formatter"
+      }
+    ],
+    "configuration": {
+      "title": "Lua Formatter",
+      "properties": {
+        "luaFormatter.semicolons": {
+          "type": "boolean",
+          "default": true,
+          "description": "End every statement with a semicolon. Lua does not require them, but they keep calls and assignments from gluing together across lines."
+        },
+        "luaFormatter.indentSize": {
+          "type": "number",
+          "minimum": 1,
+          "description": "Spaces per indent level. When unset, the editor tab size is used."
+        },
+        "luaFormatter.useTabs": {
+          "type": "boolean",
+          "description": "Indent with tabs. When unset, follows the editor insertSpaces setting."
+        },
+        "luaFormatter.lineWidth": {
+          "type": "number",
+          "default": 100,
+          "minimum": 20,
+          "description": "Unused. The formatter keeps line breaks that are already in the file."
+        },
+        "luaFormatter.quoteStyle": {
+          "type": "string",
+          "default": "preserve",
+          "enum": ["preserve", "single", "double"],
+          "enumDescriptions": [
+            "Leave quotes as they were written.",
+            "Use single quotes when the string can be converted safely.",
+            "Use double quotes when the string can be converted safely."
+          ],
+          "description": "Quote style for short strings. Long strings, escapes, and backtick literals are left alone."
+        },
+        "luaFormatter.trailingComma": {
+          "type": "string",
+          "default": "multiline",
+          "enum": ["multiline", "always", "never"],
+          "description": "Trailing commas in tables and table types. Function calls and parameter lists never get a trailing comma, because Lua rejects them."
+        },
+        "luaFormatter.insertFinalNewline": {
+          "type": "boolean",
+          "default": true,
+          "description": "End the file with a newline."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.138.0",
+    "@types/node": "24.x",
+    "typescript-eslint": "^8.61.1",
+    "eslint": "^10.5.0",
+    "typescript": "^6.0.3"
+  },
+  "overrides": {
+    "diff": "^8.0.4",
+    "serialize-javascript": "^7.0.6"
+  }
+}
