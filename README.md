@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://rawtx.gallerycdn.vsassets.io/extensions/rawtx/lua-formatter-2026/0.1.4/1790574803044/Microsoft.VisualStudio.Services.Icons.Default" width="256">
+  <img src="https://rawtx.gallerycdn.vsassets.io/extensions/rawtx/lua-formatter-2026/0.1.4/1790574803044/Microsoft.VisualStudio.Services.Icons.Default" width="180">
 </p>
 
 ---
