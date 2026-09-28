@@ -2,17 +2,13 @@
   <img src="https://rawtx.gallerycdn.vsassets.io/extensions/rawtx/lua-formatter-2026/0.1.4/1790574803044/Microsoft.VisualStudio.Services.Icons.Default" width="180">
 </p>
 
----
-
-<p align="center">
-  <strong>A simple formatter for Lua and Luau.</strong>
-</p>
-
 <p align="center">
   <a href="https://marketplace.visualstudio.com/items?itemName=rawtx.lua-formatter-2026">
     <img src="https://img.shields.io/badge/VS%20Code-Marketplace-007ACC?logo=visualstudiocode&logoColor=white" alt="VS Code Marketplace">
   </a>
 </p>
+
+### A simple formatter for Lua and Luau.
 
 supports things like:
 
