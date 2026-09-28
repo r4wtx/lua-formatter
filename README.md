@@ -1,8 +1,20 @@
-# Lua Formatter 2026
+# Lua Formatter
 
-Formats Lua and Luau. It covers standard Lua, labels, attributes, types, generics, and backtick literals. Names are left as written, so any library API stays intact.
+a simple formatter for Lua and Luau.
 
-Semicolons are optional in Lua. This formatter writes them by default. That keeps a line break from gluing two statements together, which Lua will do for a call that starts with `(`, a string, or `{`.
+supports things like:
+
+* Lua 5.1, 5.4
+* Luau types and generics
+* Labels and `goto`
+* Compound assignment
+* String interpolation
+* Backtick strings
+* Tables and functions
+
+it keeps names and library APIs as they are
+
+### example
 
 ```lua
 local function greet(name)
@@ -10,53 +22,29 @@ local function greet(name)
 end;
 
 local message = `Hello {name}!`;
-onReady("start", function(data)
-    print(message, data);
-end);
+
+greet("world");
 ```
 
-```lua
-export type PlayerData = {
-    name: string,
-    coins: number,
-};
+### Commands
 
-local function grant(player: Player, amount: number): number
-    local data: PlayerData = {
-        name = player.name,
-        coins = amount,
-    };
-    return data.coins;
-end;
-```
+* **Format Document** - `shift + alt + f` (literally default vscode format)
+* **Lua Formatter: Format Document**
 
-## What it formats
+open a `.lua` or `.luau` file and format the document!
 
-- Lua 5.1 through 5.4: functions, tables, long strings, varargs, `goto`, bitwise operators, floor division, `<const>` and `<close>`
-- Luau: types, generics, `continue`, compound assignment, if-expressions, `::` assertions, string interpolation, `type` and `type function`
-- Backtick literals such as `` `item_name` ``. A backtick string that contains `{...}` is treated as an interpolation and the expression inside is formatted
+### Settings
 
-If a file is not valid Lua, it is left unchanged and the syntax error is reported in the Problems panel.
-
-## Commands
-
-- **Format Document** (`Shift+Alt+F`)
-- **Lua Formatter: Format Document**
-
-Open a `.lua` or `.luau` file, then run **Format Document**.
-
-## Settings
-
-| Setting | Default | What it does |
-| --- | --- | --- |
-| `luaFormatter.semicolons` | `true` | End statements with `;` |
-| `luaFormatter.indentSize` | editor tab size | Spaces per indent |
-| `luaFormatter.useTabs` | editor `insertSpaces` | Indent with tabs |
-| `luaFormatter.lineWidth` | `100` | Unused. Line breaks already in the file are kept |
-| `luaFormatter.quoteStyle` | `preserve` | `preserve`, `single`, or `double` |
-| `luaFormatter.trailingComma` | `multiline` | Trailing commas in tables only |
-| `luaFormatter.insertFinalNewline` | `true` | Newline at end of file |
+| Setting                           | Default        |
+| --------------------------------- | -------------- |
+| `luaFormatter.semicolons`         | `true`         |
+| `luaFormatter.indentSize`         | editor setting |
+| `luaFormatter.useTabs`            | editor setting |
+| `luaFormatter.lineWidth`          | `100`          |
+| `luaFormatter.quoteStyle`         | `preserve`     |
+| `luaFormatter.trailingComma`      | `multiline`    |
+| `luaFormatter.insertFinalNewline` | `true`         |
 
 ## License
 
-MIT.
+MIT
