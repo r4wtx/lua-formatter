@@ -1,5 +1,9 @@
 # Lua Formatter
 
+<p align="center">
+  <img src="https://rawtx.gallerycdn.vsassets.io/extensions/rawtx/lua-formatter-2026/0.1.4/1790574803044/Microsoft.VisualStudio.Services.Icons.Default" width="128">
+</p>
+
 a simple formatter for Lua and Luau.
 
 supports things like:
