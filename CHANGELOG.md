@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.5]
+
+- Link the GitHub repository on the Marketplace page. (I forgot to do it.)
+
 ## [0.1.4]
 
 - Add the MIT license.

@@ -2,9 +2,13 @@
   "name": "lua-formatter-2026",
   "displayName": "Lua Formatter 2026",
   "description": "Formats Lua and Luau. Semicolons are optional in Lua; this formatter writes them so statement boundaries stay obvious.",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "publisher": "rawtx",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/r4wtx/lua-formatter.git"
+  },
   "icon": "icon.png",
   "engines": {
     "vscode": "^1.138.0"

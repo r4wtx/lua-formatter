@@ -47,4 +47,4 @@ open a `.lua` or `.luau` file and format the document!
 
 ## License
 
-MIT
+MIT. check out: [LICENSE](LICENSE).
