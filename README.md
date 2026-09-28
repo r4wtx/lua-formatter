@@ -8,7 +8,9 @@
   </a>
 </p>
 
-### A simple formatter for Lua and Luau.
+<hr>
+
+## A simple formatter for Lua and Luau.
 
 supports things like:
 
