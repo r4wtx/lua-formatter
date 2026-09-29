@@ -1,5 +1,10 @@
 # Change Log
 
+## [0.1.6]
+
+- Register the formatter settings in VS Code Settings.
+- Add commands to change semicolons, quotes, commas, the final newline, and indent. They save to user settings.
+
 ## [0.1.5]
 
 - Link the GitHub repository on the Marketplace page. (I forgot to do it.)

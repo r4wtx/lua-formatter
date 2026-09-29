@@ -40,6 +40,14 @@ greet("world");
 
 * **Format Document** - `shift + alt + f` (literally default vscode format)
 * **Lua Formatter: Format Document**
+* **Lua Formatter: Configure** — pick a setting
+* **Lua Formatter: Semicolons** — `true` or `false`
+* **Lua Formatter: Quote Style**
+* **Lua Formatter: Trailing Commas**
+* **Lua Formatter: Final Newline**
+* **Lua Formatter: Indent Size**
+* **Lua Formatter: Use Tabs**
+* **Lua Formatter: Open Settings**
 
 open a `.lua` or `.luau` file and format the document!
 

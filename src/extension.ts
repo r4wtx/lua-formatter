@@ -1,4 +1,5 @@
 import * as vscode from "vscode";
+import { readStoredSetting, registerSettingsCommands } from "./settingsCommands";
 import { FormatError, FormatOptions, QuoteStyle, TrailingComma, formatLua } from "./formatter/format";
 
 const SELECTOR: vscode.DocumentSelector = [
@@ -25,6 +26,7 @@ export function activate(context: vscode.ExtensionContext): void {
             await vscode.commands.executeCommand("editor.action.formatDocument");
         }),
     );
+    registerSettingsCommands(context);
 }
 
 export function deactivate(): void {}
@@ -56,8 +58,8 @@ function formatDocument(document: vscode.TextDocument, diagnostics: vscode.Diagn
 function readOptions(document: vscode.TextDocument): Partial<FormatOptions> {
     const config = vscode.workspace.getConfiguration("luaFormatter", document.uri);
     const editor = vscode.workspace.getConfiguration("editor", document.uri);
-    const indentSize = explicit<number>(config, "indentSize") ?? editor.get<number>("tabSize", 4);
-    const useTabs = explicit<boolean>(config, "useTabs") ?? editor.get<boolean>("insertSpaces", true) === false;
+    const indentSize = readStoredSetting<number>(config, "indentSize") ?? editor.get<number>("tabSize", 4);
+    const useTabs = readStoredSetting<boolean>(config, "useTabs") ?? editor.get<boolean>("insertSpaces", true) === false;
     return {
         indentSize,
         useTabs,
@@ -70,19 +72,3 @@ function readOptions(document: vscode.TextDocument): Partial<FormatOptions> {
     };
 }
 
-function explicit<T>(config: vscode.WorkspaceConfiguration, key: string): T | undefined {
-    const info = config.inspect<T>(key);
-    if (!info) {
-        return undefined;
-    }
-    if (info.workspaceFolderValue !== undefined) {
-        return info.workspaceFolderValue;
-    }
-    if (info.workspaceValue !== undefined) {
-        return info.workspaceValue;
-    }
-    if (info.globalValue !== undefined) {
-        return info.globalValue;
-    }
-    return undefined;
-}
