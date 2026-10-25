@@ -58,7 +58,7 @@ function formatDocument(document: vscode.TextDocument, diagnostics: vscode.Diagn
 function readOptions(document: vscode.TextDocument): Partial<FormatOptions> {
     const config = vscode.workspace.getConfiguration("luaFormatter", document.uri);
     const editor = vscode.workspace.getConfiguration("editor", document.uri);
-    const indentSize = readStoredSetting<number>(config, "indentSize") ?? editor.get<number>("tabSize", 4);
+    const indentSize = readStoredSetting<number>(config, "indentSize") ?? config.get<number>("indentSize", 2);
     const useTabs = readStoredSetting<boolean>(config, "useTabs") ?? editor.get<boolean>("insertSpaces", true) === false;
     return {
         indentSize,

@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.7]
+
+- Use 2 spaces per indent by default, instead of the editor tab size.
+
 ## [0.1.6]
 
 - Register the formatter settings in VS Code Settings.

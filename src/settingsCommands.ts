@@ -57,7 +57,7 @@ async function configure(): Promise<void> {
             { label: "Quote Style", description: shown("quoteStyle"), run: chooseQuoteStyle },
             { label: "Trailing Commas", description: shown("trailingComma"), run: chooseTrailingComma },
             { label: "Final Newline", description: shown("insertFinalNewline"), run: chooseFinalNewline },
-            { label: "Indent Size", description: shownIndent(), run: chooseIndentSize },
+            { label: "Indent Size", description: String(vscode.workspace.getConfiguration(section).get("indentSize", 2)), run: chooseIndentSize },
             { label: "Use Tabs", description: shownTabs(), run: chooseUseTabs },
         ],
         { title: "Lua Formatter", placeHolder: "Choose a setting" },
@@ -110,30 +110,21 @@ async function chooseUseTabs(): Promise<void> {
 }
 
 async function chooseIndentSize(): Promise<void> {
-    const current = stored("indentSize");
-    const picked = await vscode.window.showQuickPick<SettingChoice<number | "other" | "editor">>([
+    const current = stored("indentSize") ?? vscode.workspace.getConfiguration(section).get<number>("indentSize", 2);
+    const picked = await vscode.window.showQuickPick<SettingChoice<number | "other">>([
         sizeChoice(2, current),
         sizeChoice(4, current),
         sizeChoice(8, current),
         { label: "Other number...", value: "other" },
-        {
-            label: "editor",
-            description: current === undefined ? "current" : "Follow the editor tab size",
-            value: "editor",
-        },
     ], { title: "Lua Formatter: Indent Size", placeHolder: "Choose a value" });
     if (!picked) {
-        return;
-    }
-    if (picked.value === "editor") {
-        await save("indentSize", undefined, "Indent size follows the editor tab size.");
         return;
     }
     if (picked.value === "other") {
         const typed = await vscode.window.showInputBox({
             title: "Lua Formatter: Indent Size",
             prompt: "Spaces per indent level",
-            value: typeof current === "number" ? String(current) : "4",
+            value: typeof current === "number" ? String(current) : "2",
             validateInput(text) {
                 const size = Number(text);
                 if (!Number.isInteger(size) || size < 1) {
@@ -180,11 +171,6 @@ function sizeChoice(size: number, current: unknown): SettingChoice<number> {
 function shown(key: string): string {
     const value = vscode.workspace.getConfiguration(section).get(key);
     return value === undefined ? "" : String(value);
-}
-
-function shownIndent(): string {
-    const value = stored("indentSize");
-    return typeof value === "number" ? String(value) : "editor";
 }
 
 function shownTabs(): string {

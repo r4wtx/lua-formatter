@@ -13,7 +13,7 @@ export interface FormatOptions {
 }
 
 export const defaultOptions: FormatOptions = {
-    indentSize: 4,
+    indentSize: 2,
     useTabs: false,
     semicolons: true,
     lineWidth: 100,

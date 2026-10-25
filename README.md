@@ -28,7 +28,7 @@ it keeps names and library APIs as they are
 
 ```lua
 local function greet(name)
-    print("hi " .. name);
+  print("hi " .. name);
 end;
 
 local message = `Hello {name}!`;
@@ -56,7 +56,7 @@ open a `.lua` or `.luau` file and format the document!
 | Setting                           | Default        |
 | --------------------------------- | -------------- |
 | `luaFormatter.semicolons`         | `true`         |
-| `luaFormatter.indentSize`         | editor setting |
+| `luaFormatter.indentSize`         | `2`            |
 | `luaFormatter.useTabs`            | editor setting |
 | `luaFormatter.lineWidth`          | `100`          |
 | `luaFormatter.quoteStyle`         | `preserve`     |

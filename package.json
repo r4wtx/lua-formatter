@@ -2,7 +2,7 @@
   "name": "lua-formatter-2026",
   "displayName": "Lua Formatter 2026",
   "description": "Formats Lua and Luau. Semicolons are optional in Lua; this formatter writes them so statement boundaries stay obvious.",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "publisher": "rawtx",
   "license": "MIT",
   "repository": {
@@ -164,11 +164,11 @@
         },
         "luaFormatter.indentSize": {
           "type": "number",
-          "default": 4,
+          "default": 2,
           "minimum": 1,
           "scope": "language-overridable",
           "order": 5,
-          "description": "Spaces per indent level. Until you change this, the editor tab size is used."
+          "description": "Spaces per indent level."
         },
         "luaFormatter.useTabs": {
           "type": "boolean",
