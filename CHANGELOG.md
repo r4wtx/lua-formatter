@@ -1,5 +1,9 @@
 # Change Log
 
+## [0.1.8]
+
+- Stop writing semicolons after blocks closed by `end` (`if`, `for`, `while`, `do`, function declarations) and after labels. Calls and assignments keep theirs, even when they end in `end` or `}`.
+
 ## [0.1.7]
 
 - Use 2 spaces per indent by default, instead of the editor tab size.

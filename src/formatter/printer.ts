@@ -21,6 +21,27 @@ export function printChunk(chunk: Chunk, options: FormatOptions): string {
     return new Printer(options).print(chunk);
 }
 
+/**
+ * Block statements closed by `end` and labels carry no semicolon. `repeat` keeps one:
+ * it ends in an expression, so a next line starting with `(` would parse as a call.
+ */
+function takesSemicolon(stmt: Statement): boolean {
+    switch (stmt.kind) {
+        case "do":
+        case "while":
+        case "if":
+        case "numericFor":
+        case "genericFor":
+        case "localFunction":
+        case "function":
+        case "typeFunction":
+        case "label":
+            return false;
+        default:
+            return true;
+    }
+}
+
 class Printer {
     private out = "";
     private col = 0;
@@ -80,7 +101,7 @@ class Printer {
         if (stmt.kind !== "empty") {
             this.ensureBreak();
             this.printStatementBody(stmt);
-            if (this.options.semicolons) {
+            if (this.options.semicolons && takesSemicolon(stmt)) {
                 this.write(";");
             }
         }

@@ -73,7 +73,7 @@ async function openSettings(): Promise<void> {
 
 async function chooseSemicolons(): Promise<void> {
     await choose("semicolons", "Semicolons", [
-        { label: "true", description: "Write a semicolon after each statement", value: true },
+        { label: "true", description: "Write a semicolon after statements, but not after blocks closed by end", value: true },
         { label: "false", description: "Do not add semicolons", value: false },
     ]);
 }

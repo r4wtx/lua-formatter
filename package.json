@@ -2,7 +2,7 @@
   "name": "lua-formatter-2026",
   "displayName": "Lua Formatter 2026",
   "description": "Formats Lua and Luau. Semicolons are optional in Lua; this formatter writes them so statement boundaries stay obvious.",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "publisher": "rawtx",
   "license": "MIT",
   "repository": {
@@ -127,7 +127,7 @@
           "default": true,
           "scope": "language-overridable",
           "order": 1,
-          "description": "End every statement with a semicolon. Lua does not require them, but they keep calls and assignments from gluing together across lines."
+          "description": "End statements with a semicolon, except blocks closed by `end` (if, for, while, do, function declarations) and labels. Lua does not require them, but they keep calls and assignments from gluing together across lines."
         },
         "luaFormatter.quoteStyle": {
           "type": "string",

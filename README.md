@@ -29,7 +29,7 @@ it keeps names and library APIs as they are
 ```lua
 local function greet(name)
   print("hi " .. name);
-end;
+end
 
 local message = `Hello {name}!`;
 
